@@ -24,11 +24,11 @@ git clone [https://github.com/PavithraPN-01/Agent-lgls-stack.git](https://github
 cd Agent-lgls-stack
 
 ```
-2. Run the Research Assistant
-Use agentic-app.py to launch the full Graphical User Interface (GUI):
+### 2.Run the Research Assistant
 
 ```bash
 streamlit run agentic-app.py
 
 ```
+
 
