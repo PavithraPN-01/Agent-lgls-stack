@@ -1,1 +1,19 @@
+# API Keys and Secrets
 .env
+.venv/
+env/
+venv/
+
+# Python cache and temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Streamlit specific
+.streamlit/config.toml
+.streamlit/secrets.toml
+
+# OS specific files
+.DS_Store
+Thumbs.db
