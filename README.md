@@ -25,6 +25,7 @@ cd Agent-lgls-stack
 
 ```
 ### 2.Run the Research Assistant
+Run this command  to launch the full Graphical User Interface (GUI):
 
 ```bash
 streamlit run agentic-app.py
