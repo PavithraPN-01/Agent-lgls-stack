@@ -301,7 +301,7 @@ Responsibilities:
 - Avoid unnecessary web searches
 - Improve response speed
 
-````markdown
+
 # 🛠️ Technology Stack
 
 The Multi-Agent Research Assistant is built using modern Generative AI frameworks and tools that enable intelligent workflow orchestration, natural language understanding, and live web information retrieval.
@@ -851,9 +851,8 @@ The graphical interface was tested for:
 - Raw search result display
 
 ---
-````
 
-````markdown
+
 # 🌟 Project Highlights
 
 This project demonstrates the practical implementation of **Agentic AI** using a graph-based workflow. Instead of relying solely on a Large Language Model (LLM), the application intelligently decides whether to answer from its internal knowledge or retrieve real-time information from the web.
@@ -1194,6 +1193,6 @@ The repository reflects practical experience in Generative AI, workflow orchestr
 ### Happy Coding! 🚀
 
 </div>
-````
+
 
 ---
