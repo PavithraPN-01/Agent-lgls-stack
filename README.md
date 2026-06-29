@@ -1122,13 +1122,6 @@ Their contributions continue to advance AI research and application development.
 
 ---
 
-
-```
-
-```
-
----
-
 # ⭐ Support the Project
 
 If you found this project helpful or learned something from it:
