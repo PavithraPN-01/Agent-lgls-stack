@@ -1083,9 +1083,9 @@ See the `LICENSE` file for complete details.
 
 # 👩‍💻 Author
 
-## Pavithra P N
+## Pavithra PN
 
-**Generative AI Enthusiast | AI Developer | Python Programmer**
+**Data Science & Generative AI Enthusiast | Python Programmer | Open to Work**
 
 ### Areas of Interest
 
