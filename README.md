@@ -1,4 +1,4 @@
-````markdown
+
 # 🔍 Multi-Agent Research Assistant using LangGraph, Groq & Tavily
 
 <p align="center">
@@ -1197,4 +1197,3 @@ The repository reflects practical experience in Generative AI, workflow orchestr
 ````
 
 ---
-````
