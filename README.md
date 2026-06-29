@@ -1122,26 +1122,9 @@ Their contributions continue to advance AI research and application development.
 
 ---
 
-# 📌 GitHub Topics
-
-For better repository discoverability, consider adding the following GitHub Topics:
 
 ```
-generative-ai
-agentic-ai
-langgraph
-langchain
-groq
-llama
-llm
-streamlit
-python
-artificial-intelligence
-ai-agent
-workflow
-tavily
-multi-agent
-research-assistant
+
 ```
 
 ---
