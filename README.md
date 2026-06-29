@@ -1,3 +1,4 @@
+````markdown
 # 🔍 Multi-Agent Research Assistant using LangGraph, Groq & Tavily
 
 <p align="center">
@@ -22,51 +23,61 @@
 
 # 📖 Project Overview
 
-The **Multi-Agent Research Assistant** is an intelligent **Agentic AI application** that demonstrates how multiple AI agents can collaborate to solve user queries efficiently.
+The **Multi-Agent Research Assistant** is an intelligent **Agentic AI application** that demonstrates how multiple AI agents collaborate to answer user queries using **LangGraph**, **Groq's Llama 3.3**, and the **Tavily Search API**.
 
-Unlike traditional chatbots that answer every question using only a Large Language Model (LLM), this project introduces an intelligent decision-making workflow powered by **LangGraph**.
+Unlike traditional AI chatbots that rely solely on a Large Language Model (LLM), this project introduces an intelligent decision-making workflow capable of determining whether a user's query can be answered using the model's internal knowledge or whether it requires real-time information from the internet.
 
-The system first analyzes the user's question and determines whether it can answer using the LLM's internal knowledge or whether it should retrieve the latest information from the internet using the **Tavily Search API**.
+The workflow begins with a **Query Analysis Agent**, which evaluates the user's question. If the query involves current events, recent developments, or dynamic information, the system automatically invokes the **Tavily Search Agent** to retrieve relevant web content. The retrieved information is then passed to a **Synthesis Agent**, which generates a comprehensive and structured response using the Groq-hosted Llama 3.3 model.
 
-If recent or dynamic information is required, the application performs a live web search, gathers relevant information from trusted sources, and synthesizes a comprehensive response.
+For general knowledge questions, the workflow bypasses web search entirely and directly generates an answer using the language model, reducing latency and unnecessary API calls.
 
-If the query is general knowledge, the system directly generates an answer using the Groq-hosted Llama 3.3 model without performing unnecessary searches.
+The project demonstrates practical implementation of **Agentic AI**, **conditional routing**, **tool calling**, **state management**, and **workflow orchestration**, making it an excellent learning project for modern AI application development.
 
-This project demonstrates the practical implementation of **Agentic AI**, where multiple specialized agents work together to provide accurate, efficient, and context-aware responses.
+---
+
+# 🚀 Why This Project?
+
+Modern AI assistants such as ChatGPT, Claude, Gemini, and Perplexity combine reasoning with external tools to provide accurate and up-to-date information.
+
+This project was developed to understand how autonomous AI systems decide when to use their internal knowledge and when to retrieve external information. Rather than building a conventional chatbot, the goal was to create an intelligent multi-agent workflow that can make decisions, execute different tasks, and provide explainable responses.
+
+The project showcases how Agentic AI systems can intelligently coordinate multiple specialized agents to solve user queries efficiently while maintaining transparency and scalability.
 
 ---
 
 # 🎯 Problem Statement
 
-Large Language Models possess extensive knowledge but are limited by the data on which they were trained.
+Large Language Models possess extensive knowledge but are limited by the information available during their training.
 
-They cannot reliably answer:
+They cannot reliably answer questions related to:
 
-- Latest news
-- Recent technological advancements
-- Current affairs
-- Live market information
-- Updated research publications
+- Current events
+- Breaking news
+- Recent research publications
+- Latest AI developments
+- Market trends
+- Dynamic web content
 
-On the other hand, searching the internet for every question introduces unnecessary latency, API costs, and computational overhead.
+Performing an internet search for every user query is inefficient because it increases response time, API usage, and computational cost.
 
-This project addresses these challenges by implementing an intelligent decision-making agent capable of determining when external information is actually required.
+This project addresses this limitation by introducing an intelligent routing mechanism that determines whether web search is actually required before generating a response.
 
-The result is a faster, smarter, and more efficient AI assistant.
+The result is a faster, smarter, and more resource-efficient AI assistant.
 
 ---
 
-# 💡 Motivation
+# 💡 Objectives
 
-The inspiration behind this project was to understand how modern AI systems such as ChatGPT, Claude, Gemini, and Perplexity intelligently decide between internal reasoning and external knowledge retrieval.
+The primary objectives of this project are:
 
-Instead of building a simple chatbot, this project focuses on developing an **Agentic AI Workflow** capable of:
-
-- Making autonomous decisions
-- Executing multiple tasks
-- Managing workflow states
-- Collaborating between specialized agents
-- Producing reliable and explainable responses
+- Build an Agentic AI workflow using LangGraph.
+- Demonstrate intelligent decision-making through conditional routing.
+- Integrate a Large Language Model using Groq.
+- Retrieve live information using the Tavily Search API.
+- Generate accurate and well-structured responses.
+- Reduce unnecessary web searches.
+- Provide transparency by displaying each step of the agent workflow.
+- Develop both a Command-Line Interface (CLI) and a Streamlit-based web application.
 
 ---
 
@@ -74,44 +85,55 @@ Instead of building a simple chatbot, this project focuses on developing an **Ag
 
 ## 🤖 Intelligent Query Analysis
 
-- Determines whether the user's question requires live web search.
-- Reduces unnecessary API usage.
-- Improves overall response time.
+The application first analyzes every user query to determine whether external information is required.
+
+Benefits:
+
+- Faster responses
+- Reduced API usage
+- Efficient workflow execution
 
 ---
 
 ## 🌐 Live Web Search
 
-- Integrated with Tavily Search API.
-- Retrieves trusted and relevant sources.
-- Supports research-oriented queries.
+When recent information is required, the application automatically performs a web search using the Tavily Search API.
+
+Features include:
+
+- Research-oriented search
+- Trusted sources
+- Relevant content retrieval
+- Configurable number of search results
 
 ---
 
 ## 🧠 Direct Knowledge Answering
 
-- Uses Groq's Llama 3.3 70B Versatile model.
-- Answers general knowledge questions instantly.
-- Eliminates unnecessary internet requests.
+General knowledge questions are answered directly using the Groq-hosted **Llama-3.3-70B-Versatile** model.
+
+Advantages:
+
+- Low latency
+- No unnecessary internet requests
+- Faster response generation
 
 ---
 
 ## 🔀 Conditional Workflow Routing
 
-Implemented using LangGraph.
+LangGraph enables intelligent routing based on the query type.
 
-The workflow dynamically changes depending on the query type.
+Example workflow:
 
-Example:
-
-General Question
+General Knowledge Question
 
 ```
-User Question
+User Query
 
 ↓
 
-Analyze
+Analyze Query
 
 ↓
 
@@ -119,17 +141,17 @@ Direct Answer
 
 ↓
 
-End
+Final Response
 ```
 
-Research Question
+Research Query
 
 ```
-User Question
+User Query
 
 ↓
 
-Analyze
+Analyze Query
 
 ↓
 
@@ -137,22 +159,18 @@ Web Search
 
 ↓
 
-Synthesis
+Synthesize Response
 
 ↓
 
 Final Answer
-
-↓
-
-End
 ```
 
 ---
 
-## 📊 Step-by-Step Agent Tracking
+## 📊 Transparent Agent Execution
 
-The application displays every action taken by the agent.
+The Streamlit application displays the execution steps performed by the AI agents.
 
 Example:
 
@@ -161,166 +179,132 @@ Example:
 
 ↓
 
-🌐 Search Internet
+🌐 Search Web
 
 ↓
 
 ✍️ Generate Final Response
 ```
 
-This provides transparency and helps users understand how the system reached its final answer.
+This improves explainability by allowing users to understand how the final answer was produced.
 
 ---
 
-## 🎨 Interactive User Interface
+## 🖥️ Dual Execution Modes
 
-Built using Streamlit.
+The project can be executed in two different ways.
 
-Features include:
+### Command-Line Interface (CLI)
 
-- Clean dashboard
-- Sidebar configuration
-- Secure API key entry
-- Interactive status updates
-- Expandable search results
-- Markdown formatted responses
+The `main.py` file allows developers to test the LangGraph workflow directly from the terminal using predefined sample queries.
+
+### Streamlit Web Application
+
+The `agentic-app.py` file provides an interactive graphical interface where users can enter API keys, submit queries, and observe the workflow in real time.
 
 ---
 
 # 🏗️ System Architecture
 
 ```
-                User Query
-                     │
-                     ▼
-        ┌────────────────────────┐
-        │   Analyze Agent        │
-        └────────────────────────┘
-                     │
-      ┌──────────────┴──────────────┐
-      │                             │
-      ▼                             ▼
-Needs Web Search?              Direct Answer
-      │                             │
-      ▼                             ▼
-┌────────────────┐          ┌────────────────┐
-│ Tavily Search  │          │ Groq LLM       │
-└────────────────┘          └────────────────┘
-      │
-      ▼
-┌────────────────┐
-│ Synthesis Node │
-└────────────────┘
-      │
-      ▼
- Final Response
+                    User Query
+                         │
+                         ▼
+              ┌────────────────────┐
+              │  Analyze Agent     │
+              └────────────────────┘
+                         │
+          ┌──────────────┴──────────────┐
+          │                             │
+          ▼                             ▼
+   Needs Web Search?              Direct Answer
+          │                             │
+          ▼                             ▼
+ ┌──────────────────┐          ┌──────────────────┐
+ │ Tavily Search    │          │ Groq LLM         │
+ └──────────────────┘          └──────────────────┘
+          │
+          ▼
+ ┌──────────────────┐
+ │ Synthesis Agent  │
+ └──────────────────┘
+          │
+          ▼
+     Final Response
 ```
 
 ---
 
-# 🧠 Agent Workflow
+# ⚙️ How It Works
 
-The application consists of four intelligent AI agents working collaboratively.
+The workflow follows these steps:
+
+1. The user submits a query.
+
+2. The Query Analysis Agent determines whether the query requires recent information.
+
+3. If recent information is required, the workflow invokes the Tavily Search Agent.
+
+4. The search results are collected and passed to the Synthesis Agent.
+
+5. The Synthesis Agent generates a comprehensive response using the Groq-hosted Llama model.
+
+6. If the query does not require web search, the Direct Answer Agent immediately generates the response using the LLM.
+
+7. The final response and workflow execution steps are displayed to the user.
 
 ---
 
-## Agent 1 – Query Analyzer
+# 🧠 AI Agents
 
-### Purpose
+The project consists of four specialized AI agents.
 
-The Query Analyzer is responsible for understanding the user's request.
+## Agent 1 – Query Analysis Agent
 
-### Responsibilities
+Responsibilities:
 
+- Understand user intent
 - Analyze the query
-- Determine whether external knowledge is required
+- Decide whether web search is required
 - Route the workflow
-
-### Example
-
-Input
-
-```
-What is Python?
-```
-
-Decision
-
-```
-DIRECT
-```
-
----
-
-Input
-
-```
-Latest AI News
-```
-
-Decision
-
-```
-SEARCH
-```
 
 ---
 
 ## Agent 2 – Web Search Agent
 
-This agent is only activated when the analyzer determines that recent information is required.
-
 Responsibilities:
 
-- Perform web search
-- Retrieve top sources
-- Organize retrieved content
-- Pass information to the synthesis agent
-
-Search Engine Used
-
-- Tavily Search API
-
-Maximum Search Results
-
-```
-3 Sources
-```
+- Retrieve information from the internet
+- Use the Tavily Search API
+- Collect relevant sources
+- Pass search results to the Synthesis Agent
 
 ---
 
 ## Agent 3 – Synthesis Agent
 
-After retrieving information, this agent generates a comprehensive response.
+Responsibilities:
 
-Responsibilities
-
-- Read retrieved documents
-- Remove duplicate information
-- Generate a coherent summary
-- Produce a natural language response
+- Read retrieved search results
+- Summarize information
+- Generate a structured response
 - Preserve important facts
 
 ---
 
 ## Agent 4 – Direct Answer Agent
 
-This agent handles general knowledge questions.
+Responsibilities:
 
-Responsibilities
+- Handle general knowledge questions
+- Generate responses using the LLM
+- Avoid unnecessary web searches
+- Improve response speed
 
-- Query Groq Llama 3.3
-- Generate concise responses
-- Skip unnecessary searches
-- Reduce latency
-
-```
-
----
-
+````markdown
 # 🛠️ Technology Stack
 
-The project is built using modern Generative AI frameworks and tools that enable intelligent workflow orchestration, natural language understanding, and live web information retrieval.
+The Multi-Agent Research Assistant is built using modern Generative AI frameworks and tools that enable intelligent workflow orchestration, natural language understanding, and live web information retrieval.
 
 | Technology | Purpose |
 |------------|---------|
@@ -328,40 +312,30 @@ The project is built using modern Generative AI frameworks and tools that enable
 | **LangGraph** | Multi-agent workflow orchestration |
 | **LangChain** | LLM integration framework |
 | **Groq API** | High-speed LLM inference |
-| **Llama 3.3 70B Versatile** | Large Language Model |
+| **Llama-3.3-70B-Versatile** | Large Language Model |
 | **Tavily Search API** | Live web search and retrieval |
 | **Streamlit** | Interactive web application |
 | **python-dotenv** | Environment variable management |
-| **Typing** | State type definitions |
-| **Operator** | State aggregation |
+| **Typing** | State management using TypedDict |
+| **Operator** | State aggregation within LangGraph |
 
 ---
 
 # 📂 Project Structure
 
 ```
-Multi-Agent-Research-Assistant/
+Agent-lgls-stack/
+│
+├── Tests_Scriptfiles/
+│   └── tavily-connection.py
 │
 ├── agentic-app.py
 ├── main.py
 ├── requirements.txt
-├── .env
+├── .env.example
 ├── .gitignore
-├── README.md
-│
-├── Tests_Scriptfiles/
-│   ├── tavily-connection.py
-│   ├── groq-test.py
-│   └── other utility scripts
-│
-├── screenshots/
-│   ├── home.png
-│   ├── workflow.png
-│   ├── answer.png
-│   └── search-results.png
-│
-└── assets/
-    └── architecture.png
+├── LICENSE
+└── README.md
 ```
 
 ---
@@ -370,91 +344,105 @@ Multi-Agent-Research-Assistant/
 
 ## 📌 agentic-app.py
 
-This is the main Streamlit application.
+This file provides the Streamlit-based graphical user interface (GUI) for the application.
 
 Responsibilities include:
 
-- Creating the web interface
 - Accepting user queries
-- Collecting API keys
-- Executing the LangGraph workflow
-- Displaying reasoning steps
-- Presenting the final answer
-- Showing raw search results
+- Securely collecting Groq and Tavily API keys
+- Building the LangGraph workflow
+- Executing the workflow
+- Displaying agent execution steps
+- Showing the final synthesized response
+- Displaying raw search results when web search is performed
 
-This file acts as the frontend of the application.
+This serves as the primary user interface of the project.
 
 ---
 
 ## 📌 main.py
 
-This file contains the core business logic.
+This file contains the complete Agentic AI workflow implementation.
 
 It defines:
 
 - ResearchState
-- LangGraph workflow
-- Agent Nodes
-- Routing Logic
-- Search Integration
-- Answer Generation
+- Query Analysis Agent
+- Web Search Agent
+- Response Synthesis Agent
+- Direct Answer Agent
+- Conditional Routing Logic
+- LangGraph Workflow
 
-This is the heart of the application where all AI reasoning takes place.
+The file also includes predefined sample queries for command-line testing.
+
+---
+
+## 📌 Tests_Scriptfiles/
+
+This folder contains utility scripts used during development.
+
+### tavily-connection.py
+
+A standalone testing script used to verify the Tavily Search API connection before integrating it into the complete workflow.
+
+---
+
+## 📌 .env.example
+
+Provides a template for configuring API keys required by the application.
+
+Example:
+
+```env
+groq_api_key = "Paste your Groq API key here"
+langsmith_api_key = "Paste your LangSmith API key here"
+tavily_api_key = "Paste your Tavily API key here"
+```
+
+> **Note:** The current implementation uses only the **Groq** and **Tavily** API keys. The LangSmith key is included as a placeholder for future tracing and observability features.
 
 ---
 
 ## 📌 requirements.txt
 
-Contains all Python dependencies required for running the project.
-
-Example packages include:
-
-- streamlit
-- langgraph
-- langchain
-- langchain-groq
-- tavily-python
-- python-dotenv
+Contains all Python packages required to install and run the application.
 
 ---
 
-## 📌 .env
+## 📌 LICENSE
 
-Stores secret API credentials.
+Contains the MIT License for this project.
 
-Example
+---
 
-```text
-groq_api_key=YOUR_GROQ_API_KEY
+## 📌 README.md
 
-tavily_api_key=YOUR_TAVILY_API_KEY
-```
-
-This file is ignored by Git using `.gitignore`.
+Provides complete documentation, setup instructions, architecture explanation, workflow details, and implementation overview.
 
 ---
 
 # 🧠 LangGraph State Management
 
-The workflow maintains a shared state throughout execution.
+LangGraph maintains a shared state throughout workflow execution.
 
-The state contains:
+The state contains the following variables:
 
 | Variable | Description |
 |-----------|-------------|
-| query | User question |
-| needs_search | Decision made by analyzer |
-| search_results | Retrieved web information |
-| final_answer | Generated response |
-| steps | Workflow execution history |
+| **query** | User input |
+| **needs_search** | Decision made by the Query Analysis Agent |
+| **search_results** | Retrieved web search results |
+| **final_answer** | Generated response |
+| **steps** | Execution history of the workflow |
 
-The state is continuously updated as different agents complete their tasks.
+Each node updates the shared state before passing it to the next node.
 
 ---
 
 # 🔄 Workflow Execution
 
-The LangGraph workflow executes in the following sequence.
+The LangGraph workflow executes as follows:
 
 ```
 START
@@ -465,7 +453,7 @@ Analyze Query
 
 ↓
 
-Does it need Search?
+Needs Web Search?
 
 ↓
 
@@ -475,13 +463,13 @@ YES ───────────────► Search Web
 
 │                       ▼
 
-│               Retrieve Sources
+│              Retrieve Search Results
 
 │                       │
 
 │                       ▼
 
-│                Synthesize Answer
+│              Synthesize Response
 
 │                       │
 
@@ -493,7 +481,7 @@ NO
 
 ↓
 
-Direct Answer
+Generate Direct Answer
 
 ↓
 
@@ -508,16 +496,16 @@ END
 
 # 🔀 Conditional Routing
 
-One of the most important features of this project is dynamic routing.
+One of the key features of LangGraph is conditional routing.
 
-Instead of following a fixed pipeline, the workflow changes depending on user intent.
+Rather than following a fixed execution pipeline, the workflow dynamically changes depending on the user's query.
 
-For example,
+### Example 1
 
-Question:
+Query
 
 ```
-Explain Neural Networks
+Explain Machine Learning
 ```
 
 Workflow
@@ -536,10 +524,12 @@ End
 
 ---
 
-Question
+### Example 2
+
+Query
 
 ```
-Latest AI regulations in Europe
+Latest developments in Artificial Intelligence
 ```
 
 Workflow
@@ -549,7 +539,7 @@ Analyze
 
 ↓
 
-Search
+Search Web
 
 ↓
 
@@ -560,66 +550,69 @@ Synthesize
 End
 ```
 
-This significantly improves efficiency.
+This approach minimizes unnecessary API calls while improving response efficiency.
 
 ---
 
-# 🌐 Live Web Search
+# 🌐 Web Search Integration
 
-Whenever recent information is required, the application uses the Tavily Search API.
+The project integrates the **Tavily Search API** to retrieve recent and reliable information from the internet.
 
-The retrieved sources are:
+Features include:
 
-- High quality
-- Research focused
-- Relevant to the query
+- Live internet search
+- Research-focused results
+- Configurable maximum search results
+- Reliable source retrieval
+- Structured search output
 
-The search results are passed directly to the synthesis agent.
+The retrieved information is then passed to the Synthesis Agent for response generation.
 
 ---
 
 # 🤖 Large Language Model
 
-The application uses
+The project uses:
 
 ## Groq
 
-Model
+Model:
 
 ```
 Llama-3.3-70B-Versatile
 ```
 
-Reasons for choosing this model:
+Reasons for selecting this model:
 
 - High reasoning capability
 - Fast inference
-- Strong instruction following
+- Strong instruction-following performance
 - Excellent summarization
 - Low latency
+- High-quality response generation
 
 ---
 
 # 🎨 User Interface
 
-The Streamlit application provides an intuitive interface.
+The Streamlit interface provides a simple and interactive user experience.
 
 Features include:
 
-- Query input box
-- Sidebar API configuration
-- Workflow progress tracker
-- Final answer section
-- Expandable search results
-- Interactive execution status
+- User query input
+- Secure API key entry
+- Sidebar configuration panel
+- Live workflow status updates
+- Final answer display
+- Expandable raw search results
+
+The interface allows users to observe the execution of each AI agent in real time.
 
 ---
 
 # 🚀 Installation Guide
 
-## Step 1
-
-Clone the repository.
+## Step 1 — Clone the Repository
 
 ```bash
 git clone https://github.com/PavithraPN-01/Agent-lgls-stack.git
@@ -629,23 +622,23 @@ cd Agent-lgls-stack
 
 ---
 
-## Step 2
+## Step 2 — Create a Virtual Environment
 
-Create a virtual environment.
-
-Windows
+### Windows
 
 ```bash
 python -m venv venv
 ```
 
-Activate
+Activate the environment:
 
 ```bash
 venv\Scripts\activate
 ```
 
-Linux / macOS
+---
+
+### Linux / macOS
 
 ```bash
 python3 -m venv venv
@@ -655,9 +648,7 @@ source venv/bin/activate
 
 ---
 
-## Step 3
-
-Install dependencies.
+## Step 3 — Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -665,57 +656,68 @@ pip install -r requirements.txt
 
 ---
 
-## Step 4
+## Step 4 — Configure API Keys
 
-Create a `.env` file.
+Rename `.env.example` to `.env` and update it with your API keys.
 
-```text
+Example:
+
+```env
 groq_api_key=YOUR_GROQ_API_KEY
-
 tavily_api_key=YOUR_TAVILY_API_KEY
 ```
 
 ---
 
-## Step 5
+## Step 5 — Run the Project
 
-Run the application.
+### Option 1 – Command-Line Interface
+
+```bash
+python main.py
+```
+
+This runs the predefined sample queries and prints the workflow execution in the terminal.
+
+---
+
+### Option 2 – Streamlit Web Application
 
 ```bash
 streamlit run agentic-app.py
 ```
 
-The application will launch automatically in your browser.
+The Streamlit application opens automatically in your default web browser.
 
 ---
 
-# 🔑 API Keys Required
+# 🔑 Required API Keys
 
-This project requires two API keys.
+The project requires the following API keys:
 
-## 1. Groq API
+## Groq API
 
-Used for
+Used for:
 
-- Query analysis
-- Direct answering
-- Response synthesis
+- Query Analysis
+- Direct Answer Generation
+- Response Synthesis
 
 ---
 
-## 2. Tavily API
+## Tavily API
 
-Used for
+Used for:
 
-- Live internet search
-- Research retrieval
-- Recent information
+- Live Internet Search
+- Information Retrieval
+- Research-Oriented Queries
 
 ---
 
 # 💬 Example Queries
 
-General Knowledge
+### General Knowledge
 
 ```
 What is Artificial Intelligence?
@@ -733,7 +735,7 @@ Direct Answer
 
 ---
 
-Current Affairs
+### Current Affairs
 
 ```
 Latest OpenAI announcements
@@ -755,7 +757,7 @@ Synthesize
 
 ---
 
-Programming
+### Programming
 
 ```
 Explain LangGraph.
@@ -764,12 +766,16 @@ Explain LangGraph.
 Expected Workflow
 
 ```
+Analyze
+
+↓
+
 Direct Answer
 ```
 
 ---
 
-Research
+### Research
 
 ```
 Recent developments in Quantum Computing
@@ -786,7 +792,11 @@ Search
 
 ↓
 
-Final Answer
+Synthesize
+
+↓
+
+Final Response
 ```
 
 ---
@@ -796,68 +806,77 @@ Final Answer
 ```
 🧠 Decision: Web Search
 
-🌐 Retrieved 3 Sources
+🌐 Found 3 Sources
 
-✍️ Generated Final Answer
+✍️ Synthesized Research
 
 ---------------------------------
 
 Final Answer:
 
-Large Language Models have recently...
+Artificial Intelligence has recently...
 ```
-
 
 ---
 
 # 🧪 Testing
 
-The application has been tested using different categories of queries.
+The application has been tested using both execution modes.
 
-✔ General Knowledge
+### Command-Line Testing
 
-✔ Programming
+- General Knowledge
+- Current Affairs
+- Programming Concepts
+- Artificial Intelligence
+- Research Questions
 
-✔ Research
+Executed using:
 
-✔ Current Affairs
-
-✔ Technology
-
-✔ Science
-
-✔ AI & Machine Learning
-
-✔ Latest News
-
-✔ Educational Questions
-
-✔ Web Search Queries
+```bash
+python main.py
+```
 
 ---
 
+### Streamlit Testing
+
+The graphical interface was tested for:
+
+- API key validation
+- Query processing
+- Workflow execution
+- Live status updates
+- Final answer generation
+- Raw search result display
+
+---
+````
+
+````markdown
 # 🌟 Project Highlights
 
-This project demonstrates the practical implementation of **Agentic AI** using a graph-based workflow. Instead of relying solely on a Large Language Model (LLM), the application intelligently decides whether to answer from internal knowledge or retrieve real-time information from the web.
+This project demonstrates the practical implementation of **Agentic AI** using a graph-based workflow. Instead of relying solely on a Large Language Model (LLM), the application intelligently decides whether to answer from its internal knowledge or retrieve real-time information from the web.
 
 ### Key Highlights
 
 - 🤖 Multi-Agent AI Workflow
 - 🔄 Conditional Routing using LangGraph
-- 🌐 Live Web Search Integration
-- 🧠 Intelligent Decision Making
+- 🌐 Live Web Search Integration with Tavily
+- 🧠 Intelligent Query Analysis
 - ⚡ High-Speed Inference using Groq
-- 📚 Research-Oriented Responses
-- 🎨 Interactive Streamlit Dashboard
+- 📚 Research-Oriented Response Generation
+- 🎨 Interactive Streamlit Interface
+- 🖥️ Command-Line Testing Support
 - 🔐 Secure API Key Management
-- 📊 Transparent Agent Execution
+- 📊 Transparent Workflow Execution
 - 📝 Well-Structured Response Generation
 
 ---
 
 # 📚 Concepts Demonstrated
 
-This project showcases knowledge and practical implementation of:
+This project showcases practical implementation of several important Generative AI concepts, including:
 
 - Agentic AI
 - LangGraph
@@ -873,35 +892,37 @@ This project showcases knowledge and practical implementation of:
 - Environment Variable Management
 - Streamlit Application Development
 - Python Programming
-- AI Application Deployment
+- AI Application Development
 
 ---
 
 # 🎯 Skills Demonstrated
 
-Through this project, the following technical skills have been applied:
+The project demonstrates the following technical skills.
 
-### Programming Skills
+### Programming
 
-- Python Programming
-- Object-Oriented Programming
-- Modular Code Organization
+- Python
+- Modular Programming
+- Object-Oriented Design
+- Code Organization
 
-### Artificial Intelligence
+### Generative AI
 
 - Large Language Models
 - Agentic AI
-- AI Workflow Design
+- Workflow Design
 - Prompt Engineering
+- AI Tool Integration
 - Information Retrieval
 
-### Frameworks
+### Frameworks & Libraries
 
 - LangGraph
 - LangChain
 - Streamlit
 
-### APIs
+### API Integration
 
 - Groq API
 - Tavily Search API
@@ -909,134 +930,129 @@ Through this project, the following technical skills have been applied:
 ### Software Engineering
 
 - State Management
-- Clean Code
-- Modular Architecture
 - Environment Configuration
 - Error Handling
 - Git & GitHub
+- Modular Project Architecture
 
 ---
 
 # 🎓 Learning Outcomes
 
-This project helped in understanding:
+This project provided practical experience in:
 
-- How AI Agents communicate with each other.
-- How LangGraph manages workflow execution.
-- How state is passed between multiple agents.
-- How to integrate external tools into AI applications.
-- How LLMs can make autonomous decisions.
-- How to build production-ready AI applications.
-- How to design explainable AI systems.
-- How to create scalable multi-agent workflows.
+- Building an Agentic AI workflow
+- Understanding LangGraph execution
+- Passing state between workflow nodes
+- Integrating external AI tools
+- Implementing conditional routing
+- Designing explainable AI workflows
+- Building interactive AI applications
+- Combining reasoning with external knowledge retrieval
 
 ---
 
 # 🚧 Challenges Faced
 
-During development, several challenges were encountered:
+Several challenges were encountered during development, including:
 
 - Understanding LangGraph workflow execution
-- Managing shared application state
-- Designing effective prompts for routing decisions
+- Designing an effective query analyzer
+- Managing shared workflow state
 - Integrating multiple APIs
 - Handling environment variables securely
-- Creating a modular project structure
-- Building a responsive user interface
-- Debugging workflow transitions
-- Improving answer quality
+- Building an interactive Streamlit interface
 - Reducing unnecessary API calls
+- Improving response quality
+- Debugging workflow routing
 
-Each challenge provided valuable experience in building real-world AI systems.
+Each challenge contributed to a deeper understanding of real-world AI application development.
 
 ---
 
 # 🚀 Future Enhancements
 
-This project serves as a foundation for more advanced Agentic AI systems.
+This project serves as a strong foundation for more advanced Agentic AI systems.
 
-Future improvements include:
+Possible future improvements include:
 
-- 💬 Multi-turn conversation memory
-- 🧠 Long-term memory using vector databases
-- 📄 PDF and document analysis
+- 💬 Multi-turn conversation support
+- 🧠 Long-term conversational memory
+- 📄 PDF document analysis
 - 📚 Retrieval-Augmented Generation (RAG)
-- 🗂️ FAISS or ChromaDB integration
-- 🖼️ Image understanding using multimodal models
-- 🎙️ Voice-based interaction
+- 🗂️ Vector database integration (FAISS or ChromaDB)
 - 🌍 Multi-language support
-- 📊 Analytics Dashboard
-- 📈 Agent Performance Monitoring
-- 🔍 Citation-based responses
-- 🧩 Multi-agent collaboration with additional specialized agents
+- 🎙️ Voice-based interaction
+- 🖼️ Multimodal input support
+- 📈 Workflow analytics dashboard
+- 🔍 Source citation formatting
 - ☁️ Cloud deployment
 - 🐳 Docker containerization
-- 🔐 User authentication and session management
+- 👤 User authentication
+- 📊 Agent performance monitoring
 
 ---
 
 # ⚡ Performance Considerations
 
-The application has been designed to optimize both response quality and execution speed.
+The workflow has been designed to improve efficiency by:
 
-Performance strategies include:
-
-- Conditional routing to avoid unnecessary web searches
-- High-speed Groq inference
-- Lightweight Streamlit interface
-- Efficient state management using LangGraph
-- Limited search results for faster synthesis
-- Modular workflow execution
+- Avoiding unnecessary web searches
+- Using conditional routing
+- Leveraging Groq's low-latency inference
+- Executing only required workflow nodes
+- Limiting search results for faster synthesis
+- Maintaining lightweight state throughout execution
 
 ---
 
-# 🔒 Security Practices
+# 🔒 Security
 
-Security has been considered throughout development.
+The project follows several security best practices.
 
-Implemented practices include:
+Implemented measures include:
 
-- API keys stored in environment variables
+- API keys stored outside the source code
+- Environment variable configuration
 - `.env` excluded using `.gitignore`
-- No hardcoded credentials
-- Secure API key input through Streamlit sidebar
-- Local execution of sensitive configuration
+- Secure API key entry in the Streamlit interface
+- No hardcoded credentials in application logic
 
 ---
 
 # 📖 Frequently Asked Questions (FAQ)
 
-### Why use LangGraph instead of a simple LLM?
+## Why use LangGraph?
 
-LangGraph enables conditional workflows, allowing the application to make intelligent decisions about which actions to perform instead of following a fixed sequence.
-
----
-
-### Why use Tavily?
-
-Tavily is specifically designed for AI applications and provides high-quality, research-oriented search results.
+LangGraph enables conditional workflows, making it possible for AI agents to make intelligent decisions instead of following a fixed execution pipeline.
 
 ---
 
-### Why use Groq?
+## Why use Tavily?
 
-Groq offers extremely fast inference while supporting advanced open-source language models such as Llama 3.3.
+Tavily provides research-oriented web search specifically designed for AI applications, enabling retrieval of relevant and trustworthy information.
 
 ---
 
-### Does this project support recent information?
+## Why use Groq?
+
+Groq offers extremely fast inference while hosting powerful open-source language models such as **Llama-3.3-70B-Versatile**, making it ideal for responsive AI applications.
+
+---
+
+## Does the application support recent information?
 
 Yes.
 
-Whenever the analyzer determines that a query requires up-to-date information, the system automatically performs a live web search.
+Whenever the Query Analysis Agent determines that a query requires up-to-date information, the application automatically performs a live web search before generating the final response.
 
 ---
 
-### Is this a Retrieval-Augmented Generation (RAG) system?
+## Is this a Retrieval-Augmented Generation (RAG) project?
 
 No.
 
-This project is an **Agentic AI application** that performs conditional web search and response synthesis. It does not use embeddings or a vector database, which are core components of a traditional RAG pipeline.
+This project is an **Agentic AI workflow** that performs conditional web search and response synthesis. It does not use embeddings or a vector database, which are core components of a traditional RAG pipeline.
 
 ---
 
@@ -1046,11 +1062,11 @@ Contributions are welcome.
 
 If you would like to improve this project:
 
-1. Fork the repository
-2. Create a new feature branch
-3. Commit your changes
-4. Push the branch
-5. Open a Pull Request
+1. Fork the repository.
+2. Create a new feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Submit a Pull Request.
 
 Suggestions, feature requests, and improvements are always appreciated.
 
@@ -1061,6 +1077,8 @@ Suggestions, feature requests, and improvements are always appreciated.
 This project is licensed under the **MIT License**.
 
 You are free to use, modify, and distribute this project for educational and personal purposes.
+
+See the `LICENSE` file for complete details.
 
 ---
 
@@ -1082,15 +1100,15 @@ You are free to use, modify, and distribute this project for educational and per
 - Machine Learning
 - Natural Language Processing
 - AI Automation
-- Data Science 
+- Data Science
 
 ---
 
 # 🙏 Acknowledgements
 
-Special thanks to the open-source AI community and the creators of the amazing technologies used in this project.
+Special thanks to the developers and open-source communities behind the technologies that made this project possible.
 
-This project would not have been possible without:
+This project is built using:
 
 - LangGraph
 - LangChain
@@ -1098,14 +1116,16 @@ This project would not have been possible without:
 - Meta AI (Llama Models)
 - Tavily Search
 - Streamlit
-- Python Community
-- Open Source Contributors
+- Python
+- Open Source Community
+
+Their contributions continue to advance AI research and application development.
 
 ---
 
 # 📌 GitHub Topics
 
-To improve repository discoverability, add the following GitHub Topics:
+For better repository discoverability, consider adding the following GitHub Topics:
 
 ```
 generative-ai
@@ -1129,7 +1149,7 @@ research-assistant
 
 # ⭐ Support the Project
 
-If you found this project useful or learned something from it:
+If you found this project helpful or learned something from it:
 
 ⭐ Star the repository
 
@@ -1137,9 +1157,9 @@ If you found this project useful or learned something from it:
 
 📝 Share your feedback
 
-🤝 Contribute to the project
+🤝 Contribute to future improvements
 
-Your support helps improve the project and motivates further development.
+Your support encourages continued learning and development of open-source AI projects.
 
 ---
 
@@ -1157,18 +1177,24 @@ https://github.com/PavithraPN-01/Agent-lgls-stack
 
 # 🎉 Conclusion
 
-The **Multi-Agent Research Assistant** demonstrates how modern AI systems can intelligently combine reasoning, decision-making, and external knowledge retrieval to deliver accurate and context-aware responses.
+The **Multi-Agent Research Assistant** demonstrates how modern AI systems can combine reasoning, decision-making, and external knowledge retrieval to generate accurate and context-aware responses.
 
-By integrating **LangGraph**, **Groq's Llama 3.3**, **Tavily Search API**, and **Streamlit**, this project showcases a complete Agentic AI workflow that is modular, scalable, and production-ready.
+By integrating **LangGraph**, **Groq's Llama-3.3-70B-Versatile**, **Tavily Search API**, and **Streamlit**, this project showcases a complete Agentic AI workflow that is modular, scalable, explainable, and easy to extend.
 
-This project reflects practical skills in Generative AI, workflow orchestration, state management, API integration, and modern AI application development, making it a strong portfolio project for anyone exploring Agentic AI systems.
+The repository reflects practical experience in Generative AI, workflow orchestration, state management, API integration, prompt engineering, and modern AI application development. It serves as a strong portfolio project for students, developers, and AI enthusiasts interested in building intelligent multi-agent systems.
 
 ---
 
 <div align="center">
 
-### ⭐ If you found this repository helpful, consider giving it a star!
+## ⭐ If you found this repository helpful, consider giving it a Star!
 
-**Thank you for visiting this project! Happy Coding! 🚀**
+### Thank you for visiting this project.
+
+### Happy Coding! 🚀
 
 </div>
+````
+
+---
+````
